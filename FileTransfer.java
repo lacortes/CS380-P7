@@ -54,6 +54,9 @@ public class FileTransfer {
 		}
 	}
 
+	/**
+	 *	Run the server while the connection is open
+	 */
 	private void server() {
 
 	}
@@ -77,7 +80,7 @@ public class FileTransfer {
 
 			// Check if valid size
 			if (size == 1 || size == 3 || size == 4) 
-				new FileTransfer(args);
+				new FileTransfer(args); // Valid
 			else
 				System.out.println("Incorrect argument size!");
 		}
