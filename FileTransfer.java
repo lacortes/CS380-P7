@@ -4,21 +4,24 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.security.*;
 
-
 // Luis Cortes
 // CS380
 // Project 7
 
 public class FileTransfer {
+	private final String[] args; 
 
 	public FileTransfer(String[] args) {
+		this.args = args;
 		switch(args.length) {
 			case 1: // makeKeys
 				makeKeys();
 				break;
 			case 3: // server
+				server();
 				break;
 			case 4: // client
+				client();
 				break;
 			default:
 		}
@@ -58,11 +61,21 @@ public class FileTransfer {
 	 *	Run the server while the connection is open
 	 */
 	private void server() {
+		try  {
+			ServerMode server = new ServerMode(args[1], Integer.parseInt(args[2]));
+			server.startServer();
 
+		} catch (Exception e ) {e.printStackTrace();}
 	}
 
+	/**
+	 *	Run the client
+	 */
 	private void client() {
-
+		try {
+			ClientMode client = new ClientMode(args[1], args[2], Integer.parseInt(args[3]));
+			client.start();
+		} catch (Exception e) {e.printStackTrace();}
 	}
 
 	/**
