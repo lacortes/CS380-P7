@@ -9,6 +9,27 @@ import java.security.*;
 // Project 7
 
 public class FileTransfer {
+	/**
+	 *	Main Method
+	 * 	Check whether command line arguments were passed correctly
+	 */
+	public static void main(String[] args) {
+		if (args.length <= 0) { // NO command line arguments inserted
+			System.out.println("Usage:  FileTransfer");
+			System.out.println("\tmakeKeys");
+			System.out.println("\tserver <file> <port>");
+			System.out.println("\tclient <file> <host> <port>");
+		} else { // Determine how many args were passed
+			int size = args.length;
+
+			// Check if valid size
+			if (size == 1 || size == 3 || size == 4) 
+				new FileTransfer(args); // Valid
+			else
+				System.out.println("Incorrect argument size!");
+		}
+	}
+	
 	private final String[] args; 
 
 	public FileTransfer(String[] args) {
@@ -78,24 +99,4 @@ public class FileTransfer {
 		} catch (Exception e) {e.printStackTrace();}
 	}
 
-	/**
-	 *	Main Method
-	 * 	Check whether command line arguments were passed correctly
-	 */
-	public static void main(String[] args) {
-		if (args.length <= 0) { // NO command line arguments inserted
-			System.out.println("Usage:  FileTransfer");
-			System.out.println("\tmakeKeys");
-			System.out.println("\tserver <file> <port>");
-			System.out.println("\tclient <file> <host> <port>");
-		} else { // Determine how many args were passed
-			int size = args.length;
-
-			// Check if valid size
-			if (size == 1 || size == 3 || size == 4) 
-				new FileTransfer(args); // Valid
-			else
-				System.out.println("Incorrect argument size!");
-		}
-	}
 }
